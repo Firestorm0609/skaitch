@@ -97,7 +97,7 @@ export default function EditorPage() {
       {/* Main Editor */}
       <div className="flex flex-1 overflow-hidden">
         {/* Left Sidebar - Tools */}
-        <aside className="w-64 p-4 bg-gray-50 border-r border-gray-200 overflow-y-auto">
+        <aside className="w-48 lg:w-56 p-3 bg-gray-50 border-r border-gray-200 overflow-y-auto">
           <ToolPanel />
           <div className="mt-4">
             <LayerManager />
@@ -105,12 +105,12 @@ export default function EditorPage() {
         </aside>
 
         {/* Canvas Area */}
-        <main className="flex-1 flex items-center justify-center p-8 bg-gradient-to-br from-gray-100 to-gray-200">
+        <main className="flex-1 flex items-center justify-center p-4 lg:p-8 bg-gradient-to-br from-gray-100 to-gray-200">
           <SkaitchCanvas width={1024} height={768} />
         </main>
 
         {/* Right Sidebar - AI Assist */}
-        <aside className="w-80 p-4 bg-gray-50 border-l border-gray-200 overflow-y-auto">
+        <aside className="w-64 lg:w-72 p-3 bg-gray-50 border-l border-gray-200 overflow-y-auto">
           <AIAssistPanel />
           
           {/* AI Stats */}

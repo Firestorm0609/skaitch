@@ -12,9 +12,9 @@ const quickActions: Array<{
   label: string
 }> = [
   { type: 'PERFECT_SHAPE', icon: Circle, label: 'Perfect Shape' },
-  { type: 'STRAIGHTEN_LINE', icon: Minus, label: 'Straighten Line' },
-  { type: 'CLEAN_SKETCH', icon: Wand2, label: 'Clean Sketch' },
-  { type: 'COLOR_SUGGESTION', icon: Palette, label: 'Suggest Colors' },
+  { type: 'STRAIGHTEN_LINE', icon: Minus, label: 'Straight Line' },
+  { type: 'CLEAN_SKETCH', icon: Wand2, label: 'Clean Up' },
+  { type: 'COLOR_SUGGESTION', icon: Palette, label: 'Color Ideas' },
 ]
 
 export function AIAssistPanel() {
@@ -69,27 +69,35 @@ export function AIAssistPanel() {
 
   return (
     <div className="flex flex-col gap-4 p-4 bg-gradient-to-br from-skaitch-purple/10 to-skaitch-cyan/10 rounded-lg border-2 border-skaitch-purple/30">
-      <div className="flex items-center gap-2">
-        <Sparkles className="w-5 h-5 text-skaitch-purple" />
-        <h3 className="font-semibold text-skaitch-dark">AI Assist</h3>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Sparkles className="w-5 h-5 text-skaitch-purple" />
+          <h3 className="font-semibold text-skaitch-dark">AI Assist</h3>
+        </div>
+        <button
+          onClick={() => setPrompt('')}
+          className="px-2 py-1 text-xs font-medium text-white bg-red-500 hover:bg-red-600 rounded"
+        >
+          Clear
+        </button>
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-2 gap-2">
+      <div className="flex flex-col gap-2">
         {quickActions.map(({ type, icon: Icon, label }) => (
           <button
             key={type}
             onClick={() => handleQuickAction(type)}
             disabled={isAIProcessing}
             className={cn(
-              'flex items-center gap-2 px-3 py-2 rounded-md',
+              'flex items-center gap-2 px-3 py-2 rounded-md text-left',
               'bg-white hover:bg-skaitch-purple/10',
               'border border-skaitch-purple/20',
               'transition-all disabled:opacity-50'
             )}
           >
-            <Icon className="w-4 h-4 text-skaitch-purple" />
-            <span className="text-xs font-medium">{label}</span>
+            <Icon className="w-4 h-4 text-skaitch-purple flex-shrink-0" />
+            <span className="text-xs font-medium truncate">{label}</span>
           </button>
         ))}
       </div>

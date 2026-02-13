@@ -2,17 +2,19 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['arweave.net', 'www.arweave.net'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'arweave.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.arweave.net',
+      },
+    ],
   },
-  webpack: (config) => {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      net: false,
-      tls: false,
-    };
-    return config;
-  },
+  // Empty turbopack config to silence the warning
+  turbopack: {},
 }
 
 module.exports = nextConfig
