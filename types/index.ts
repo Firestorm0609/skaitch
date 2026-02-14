@@ -47,7 +47,7 @@ export type BlendMode =
 
 export interface HistoryEntry {
   id: string;
-  type: 'draw' | 'ai-assist' | 'erase' | 'transform' | 'layer-change';
+  type: 'draw' | 'ai-assist' | 'erase' | 'transform' | 'layer-change' | 'modify';
   timestamp: Date;
   before: string; // snapshot
   after: string;  // snapshot
